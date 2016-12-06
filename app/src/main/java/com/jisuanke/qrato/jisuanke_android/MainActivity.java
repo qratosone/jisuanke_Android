@@ -1,7 +1,10 @@
 package com.jisuanke.qrato.jisuanke_android;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Window;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -18,10 +21,20 @@ public class MainActivity extends AppCompatActivity {
 
         initWebView();
     }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event){
+        if ((keyCode==KeyEvent.KEYCODE_BACK)&&webView.canGoBack()){
+            webView.goBack();
+            return true;
+        }
+        return super.onKeyDown(keyCode,event);
+
+    }
 
     private void initWebView() {
         webView=(WebView)findViewById(R.id.web_view);
         webView.getSettings().setJavaScriptEnabled(true);
+
         webView.setWebViewClient(new webViewClient());
         webView.loadUrl("https://www.jisuanke.com");
     }
@@ -35,9 +48,6 @@ public class MainActivity extends AppCompatActivity {
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
 
             view.loadUrl(url);
-
-            //如果不需要其他对点击链接事件的处理返回true，否则返回false
-
             return true;
 
         }
