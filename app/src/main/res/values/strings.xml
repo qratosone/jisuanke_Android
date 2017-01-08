@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Jisuanke_Android</string>
+    <string name="title_activity_hello_activity">hello_activity</string>
 </resources>

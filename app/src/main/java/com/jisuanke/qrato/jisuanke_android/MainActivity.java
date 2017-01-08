@@ -8,6 +8,7 @@ import android.view.KeyEvent;
 import android.view.Window;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.content.pm.ActivityInfo;
 public class MainActivity extends AppCompatActivity {
     private WebView webView;
     @Override
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
             getSupportActionBar().hide();
         }
         setContentView(R.layout.activity_main);
-
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         initWebView();
     }
     @Override
